@@ -1,0 +1,49 @@
+<%- include ('./partials/header') %>
+
+<!-- Introduction section -->
+
+<section class="intro" id="home">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                <h1 class="intro-heading">Your Blog</h1>
+                <hr>
+                <hr>
+                <p class="intro-paragraph">
+                    Hey there ! Are you looking for a place where you can share your thoughts . Well,here we are
+                    then . With
+                    YOUR
+                    BLOG you can share your thoughts .<br> So what are you waiting for!Pour your thoughts out !
+                </p>
+                <hr>
+                <hr>
+                <a href="/compose"><button class="btn btn-lg btn-outline-dark">Write your Blog</button></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blogs section -->
+<section class="blogs bg-dark" id="blogs">
+    <div class="container">
+        <h1 class="text-white">Blog Posts</h1>
+        <%  for(i=0;i<Post.length;i++){ %>
+
+            <div class="jumbotron">
+                <div class="container jumb">
+                    <h6><u><%= Date %> </u></h6><hr>
+                  <h3><b><%= Post[i].title %> </b></h3>
+                  <p><%= Post[i].content.substring(0,200)+"....."%> <a class="readmore" href="/<%=Post[i].title%> ">Read More</a> </p>
+                </div>
+              </div>
+       
+
+          <% } %>   
+            </div>
+        </div>
+    </div>
+</section>
+<%- include("./partials/footer") %>

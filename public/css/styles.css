@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* header section */
+
+.navbarbrand {
+    color: #fff;
+    text-decoration: none;
+    padding-left: 1em;
+    font-family: 'Courier Prime', monospace;
+    font-size: 3em;
+}
+
+.navbarbrand:hover {
+    color: darkgray;
+    text-decoration: none;
+}
+
+.navlink {
+    color: #fff;
+    padding-left: 3em;
+    padding-top: 2em;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.navlink:hover {
+    color: darkgray;
+    text-decoration: none;
+}
+
+
+/* intro section */
+
+.intro {
+    background-size: cover;
+    text-align: center;
+    height: 40em;
+    padding-top: 2em;
+    background-image: url("https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");
+}
+
+.intro-heading {
+    padding-top: 1em;
+    color: #fff;
+    font-family: 'Courier Prime', monospace;
+    font-weight: 700;
+    font-size: 3em;
+}
+
+.intro-paragraph {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    line-height: 3em;
+    font-size: 1 em;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
+
+
+/* footer */
+
+footer {
+    background-color: #ffac41;
+}
+
+
+/* Compose page */
+
+.compose {
+    height: 40em;
+    width: 100%;
+    padding-top: 2em;
+
+}
+
+.compose-form{
+    margin-top: 1em;
+    
+
+}
+
+/* blog section */
+.blogs{
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+h3{
+    font-family: 'Lora', serif;
+}
+p{
+    font-family: 'Lora', serif; 
+}
+.jumb{
+    height: 6em;
+    
+}
+.readmore{
+    color:#ffac41 ;
+   
+}
+.readmore:hover{
+    color: black;
+    text-decoration: none;
+   
+}
+
+/* viewblogs */
+.viewblogs{
+    padding-bottom: 3em;
+}
+.view{
+    padding-top: 3em;
+}
+.view h1{
+    text-align: center;
+    font-size: 4em;
+    padding-bottom: 0.5em;
+    font-family: 'Lora', serif;
+
+}
+.view p{
+    text-align: center;
+    font-family: 'Lora', serif;
+
+}
