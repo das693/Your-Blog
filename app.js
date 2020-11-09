@@ -6,12 +6,34 @@ const app = express();
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const lodash = require("lodash");
+const mongoose = require("mongoose");
 
 // Serving static files
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Mongoose database connection
+
+mongoose.connect("mongodb://localhost:27017/yourBlogDB", { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Schema defenition
+
+const postSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    }
+});
+
+// Model defenition 
+
+const Post = mongoose.model("post", postSchema);
 
 // GET and POST requests
 
@@ -23,7 +45,12 @@ app.get("/", function (req, res) {
     const d = new Date();
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const date = d.toLocaleString("en-US", options)
-    res.render("home", { Post: posts, Date: date });
+
+    Post.find({}, function (err, posts) {
+
+        res.render("home", { Post: posts, Date: date });
+    })
+
 });
 
 // compose route
@@ -33,31 +60,33 @@ app.get("/compose", function (req, res) {
 });
 
 app.post("/compose", function (req, res) {
-
-    const newPost = {
+    const post = new Post({
         title: req.body.title,
         content: req.body.content
-    };
-    posts.push(newPost);
+    });
+    post.save(function (err) {
+        if (!err) {
+            res.redirect("/");
+        }
+    });
 
-    res.redirect("/")
-});
+}
+);
 
 // Requests to the unique post
 
-app.get("/:title", function (req, res) {
+app.get("/:titleID", function (req, res) {
 
-    const titleID = req.params.title;
+    const ID = req.params.titleID;
     const d = new Date();
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const date = d.toLocaleString("en-US", options)
 
-    for (i = 0; i < posts.length; i++) {
-        if (titleID === posts[i].title) {
-            res.render("viewblogs", { Unique: posts[i], Date: date });
+    Post.findOne({ _id: ID }, function (err, foundPost) {
+        if (!err) {
+            res.render("viewblogs", { Unique: foundPost, Date: date });
         }
-    }
-
+    });
 });
 
 app.listen(3000, function () {
